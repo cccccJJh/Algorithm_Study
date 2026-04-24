@@ -24,7 +24,20 @@ public class Problem2 {
 
     public int solution(int[] numbers, int target) {
         int answer = 0;
+        dfs(numbers, target, 0,0);
         return answer;
     }
 
+
+    private int dfs(int[] numbers, int target, int index, int sum) {
+        //종료조건
+        if(index == numbers.length){
+            return sum == target ? 1 : 0;
+        }
+
+        return dfs(numbers, target, index+1, sum + numbers[index])
+                + dfs(numbers, target, index+1, sum - numbers[index]) ;
+
+    }
 }
+
